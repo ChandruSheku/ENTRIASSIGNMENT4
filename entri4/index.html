@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetch Data Example</title>
+  <script>
+    function fetchData() {
+      var url = 'https://jsonplaceholder.typicode.com/todos';
+      var resultElement = document.getElementById('result');
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // Update the paragraph element with the retrieved data
+          resultElement.textContent = JSON.stringify(data);
+        })
+        .catch(error => {
+          // Display an error message if there's an error during the fetch
+          resultElement.textContent = 'Error: ' + error.message;
+        });
+    }
+  </script>
+</head>
+<body>
+  <button id="myButton" onclick="fetchData()">Fetch Data</button>
+  <p id="result"></p>
+</body>
+</html>
